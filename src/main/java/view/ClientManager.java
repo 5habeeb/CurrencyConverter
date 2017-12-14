@@ -24,7 +24,6 @@ import model.Currency;
 public class ClientManager implements Serializable {
     @EJB
     private ConverterFacade converterFacade;
-    private Currency currentStatus;
     private String currencyFrom;
     private String currencyTo;
     private Double sentAmount;
@@ -43,17 +42,6 @@ public class ClientManager implements Serializable {
         if (!conversation.isTransient()) {
             conversation.end();
         }
-    }
-    
-    public void initialize(){
-        try {
-            startConversation();
-            conversionFailure = null;
-            converterFacade.initialize();
-        } catch (Exception e) {
-            handleException(e);
-        }
-        
     }
     
     private void handleException(Exception e) {

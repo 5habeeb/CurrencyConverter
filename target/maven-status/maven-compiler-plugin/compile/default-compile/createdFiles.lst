@@ -1,3 +1,5 @@
+model\Currency_.class
 integration\CurrencyDAO.class
+model\Currency.class
 controller\ConverterFacade.class
 view\ClientManager.class
