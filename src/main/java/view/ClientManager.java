@@ -30,9 +30,6 @@ public class ClientManager implements Serializable {
     private Double sentAmount;
     private Double receivedAmount;
     private Exception conversionFailure;
-    
-    private boolean init = true;
-    
     @Inject
     private Conversation conversation;
     
@@ -69,12 +66,6 @@ public class ClientManager implements Serializable {
           try {
             startConversation();
             conversionFailure = null;
-            
-            if(init){
-                initialize();
-                init = false;
-            }
-            
             this.receivedAmount = converterFacade.convert(this.currencyFrom, this.currencyTo , this.sentAmount);
         } catch (Exception e) {
             handleException(e);

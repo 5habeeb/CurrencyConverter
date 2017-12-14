@@ -21,19 +21,26 @@ import model.Currency;
 public class ConverterFacade {
    @EJB CurrencyDAO currencyDB;
    
+   private boolean init = true;
+   
    public void initialize (){
        currencyDB.storeCurrencyInfo(new Currency("SEK", 1 ));
-       currencyDB.storeCurrencyInfo(new Currency("EUR", 9.54));
-       currencyDB.storeCurrencyInfo(new Currency("USD", 8.56 ));
-       currencyDB.storeCurrencyInfo(new Currency("GBP", 11.27 ));  
+       currencyDB.storeCurrencyInfo(new Currency("EUR", 9.91323));
+       currencyDB.storeCurrencyInfo(new Currency("USD", 8.42518 ));
+       currencyDB.storeCurrencyInfo(new Currency("GBP", 11.2504 ));
+       currencyDB.storeCurrencyInfo(new Currency("CAD", 6.55451 ));
    }
    
    public Double convert (String fromCurrencyName , String toCurrencyName , double amount){
-       Currency current;
+         
+        if(init){
+            initialize();
+            init = false;
+        }
        
+       Currency current;
        current = currencyDB.findCurrencyByName(fromCurrencyName);
        double fromCurrencyValue = current.getRateValue();
-       
        current = currencyDB.findCurrencyByName(toCurrencyName);
        double toCurrencyValue = current.getRateValue();
       
