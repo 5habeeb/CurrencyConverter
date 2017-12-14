@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Currency Converter</title>
+    </head>
+    <body>
+        <h:form>
+        <h1>Currency Converter</h1>
+ 
+          <p>
+        <h:outputText value="Currency I have  "/>
+        <h:selectOneMenu value="#{clientManager.currencyFrom}">
+            <f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
+            <f:selectItem itemValue="SEK" itemLabel="SEK" />
+            <f:selectItem itemValue="EUR" itemLabel="EUR" />
+            <f:selectItem itemValue="USD" itemLabel="USD" />
+            <f:selectItem itemValue="GBP" itemLabel="GBP" />
+        </h:selectOneMenu>
+          </p>  
+          <p>
+             <h:outputLabel for="sentAmount" value="Amount    "/>
+             <h:inputText id="sentAmount" value="#{clientManager.sentAmount}"/>
+          </p>   
+   
+      
+   
+        <p>
+            <h:outputText value="Currency I want  "/>
+            <h:selectOneMenu value="#{clientManager.currencyTo}">
+                <f:selectItem itemValue="#{null}" itemLabel="-- select one --" />
+                <f:selectItem itemValue="SEK" itemLabel="SEK" />
+                <f:selectItem itemValue="EUR" itemLabel="EUR" />
+                <f:selectItem itemValue="USD" itemLabel="USD" />
+                <f:selectItem itemValue="GBP" itemLabel="GBP" />
+            </h:selectOneMenu>
+        </p>
+        <p>
+            <h:outputLabel for="receivedAmount" value="Amount: "/>
+            <h:outputText id="receivedAmount" value="#{clientManager.receivedAmount}"/>
+        </p> 
+    
+       
+        
+            <h:commandButton value="Convert" action="#{clientManager.convert}" />
+       
+        
+        </h:form>
+    </body>
+</html>
